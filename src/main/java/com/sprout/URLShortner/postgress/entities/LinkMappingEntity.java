@@ -15,7 +15,11 @@ import lombok.Setter;
 public class LinkMappingEntity extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
+    @SequenceGenerator(
+            name = "sequence",
+            initialValue = 1000000000
+    )
     private Long uniqueId;
 
     @Column(name = "keyUrl", length = 7, unique = true)
