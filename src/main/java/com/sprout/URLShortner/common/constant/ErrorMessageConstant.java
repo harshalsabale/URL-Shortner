@@ -10,4 +10,6 @@ public class ErrorMessageConstant {
 
     public static final String INVALID_URL_ERROR = "URL contains Invalid characters!";
 
+    public static final String NOT_FOUND_ERROR = "The Requested Resource is Not Found!";
+
 }
