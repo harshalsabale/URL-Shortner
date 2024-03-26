@@ -21,4 +21,9 @@ public class Constant {
     public static final String SYSTEM_CREATOR = "System";
 
     public static final int SALTING_KEY = 13;
+
+    public static final int NUMBER_OF_CHARACTERS_IN_SHORT_URL = 7;
+
+    public static final String SHORT_URL_REGEX = "[a-zA-Z0-9]{%s,}";
+
 }
