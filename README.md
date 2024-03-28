@@ -1,6 +1,37 @@
 # Sprout - URL Shortner
 Sprout is a service that reduces lengthy URLs to shorter, more manageable links. These shorter URLs are easier to distribute, particularly in situations when character count is limited, such as on social networking sites like Twitter.
 
+## System Design
+While creating URL Shortening Service, there are at least 3 questions which must be answered.
+1. How many create request are we going to get per second?
+2. What are the characters are allowed in Short URL?
+3. What will be the size of Short URL?
+
+For the First Question, Let's assume that we are going to get 100 create request per second. 
+This will give us, yearly request count as `100 x 60 x 60 x 24 x 365 = 3,15,36,00,000` (3.15 Billion). In 20 years, 63.07 Billion request.
+If we want to run this service for at least 20 years, we need same number of Unique short URLs.
+
+Now comes to Second Question, There are 73 characters `i.e. Alphanumeric [0-9a-zA-Z], special characters $-_.+!*'().` which are safe to use in URL (without Encoding).
+But for the simplicity of the implementation, let us drop all the special characters and focus on the Alphanumeric characters `[A-Z][a-z][0-9]`. 
+So, we are allowed to use 62 characters.
+
+The Last Question can not be answered alone without answering the first two questions. 
+From the first question, it is clear that we will be needing at least 63.07 Billion URLs for running the service for 20 years and from second question we understood that we can use 62 characters to generate the short URLs.
+
+So, What is the least number of character, we will be needing to create 63.07 Billion short URLs from 62 characters? Let's calculate: 
+
+62<sup>1</sup> = 62 <br>
+62<sup>2</sup> = 3844 <br>
+62<sup>3</sup> = 238328 (238 Thousand)<br>
+62<sup>4</sup> = 14776336 (14 Million)<br>
+62<sup>5</sup> = 916132832 (916 Million)<br>
+62<sup>6</sup> = 56800235584 (56 Billion)<br>
+62<sup>7</sup> = 3521614606208 (3.5 Trillion) <br>
+
+This Calculation tells that we will need at least 7 characters in the short URL to uniquely represent 63.07 Billion requests.
+
+So, we have answer to all the important questions to proceed with Design & Development.
+
 ## Getting Started
 
 ### Prerequisites
