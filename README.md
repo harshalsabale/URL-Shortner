@@ -30,7 +30,14 @@ So, What is the least number of character, we will be needing to create 63.07 Bi
 
 This Calculation tells that we will need at least 7 characters in the short URL to uniquely represent 63.07 Billion requests.
 
-So, we have answer to all the important questions to proceed with Design & Development.
+So, we have answer to all the important questions, let's jump to High level design. First thing to decide is how user is going to interact with the system.
+It could be API or UI. For scope of this project, we will go by APIs. These APIs can be used to send the request from the UI. Next Question, What are those API(s)?
+There are two processes which needs APIs 
+1. Create a Short URL for the URL provided by the User. (Let's call it as shortner Service for simplicity.)
+2. Redirecting to Original URL when short URL is provided by the User. (Let's call it as Extractor Service for simplicity.)
+
+
+
 
 ## Getting Started
 
@@ -66,7 +73,7 @@ This API is responsible for checking the status of the service (Whether is it Up
 /api/health.check
 ```
 
-### 2. Create a Short URL from the URL provided
+### 2. Create a Short URL for the URL provided
 This API is responsible for creating a short URL from the provided URL.
 
 **Method :** Post <br>
