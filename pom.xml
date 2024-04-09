@@ -11,7 +11,7 @@
 	<groupId>com.sprout</groupId>
 	<artifactId>url-shortner</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>url-shortner</name>
 	<description>URL Shortner Application</description>
 	<properties>
