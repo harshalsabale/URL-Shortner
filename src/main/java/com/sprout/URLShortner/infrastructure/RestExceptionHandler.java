@@ -1,6 +1,7 @@
 package com.sprout.URLShortner.infrastructure;
 
 import com.sprout.URLShortner.common.dto.ResponseDTO;
+import com.sprout.URLShortner.common.exception.NotFoundException;
 import com.sprout.URLShortner.common.exception.ValidationException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +22,16 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 BAD_REQUEST.value(),
                 BAD_REQUEST.getReasonPhrase(),
                 ex.getMessage());
+    }
+
+    @ExceptionHandler({NotFoundException.class})
+    @ResponseStatus(NOT_FOUND)
+    @ResponseBody
+    public ResponseDTO handleNotFoundException(final NotFoundException ex) {
+        return new ResponseDTO(
+                NOT_FOUND.value(),
+                NOT_FOUND.getReasonPhrase(),
+                "Not able to find Resource requested!");
     }
 
     @ExceptionHandler({Exception.class})
