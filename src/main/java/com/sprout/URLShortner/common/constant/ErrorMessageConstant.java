@@ -12,4 +12,6 @@ public class ErrorMessageConstant {
 
     public static final String NOT_FOUND_ERROR = "The Requested Resource is Not Found!";
 
+    public static final String SOMETHING_WENT_WRONG = "Something went wrong!";
+
 }
