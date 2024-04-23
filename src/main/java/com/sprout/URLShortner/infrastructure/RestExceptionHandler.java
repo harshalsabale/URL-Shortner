@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import static com.sprout.URLShortner.common.constant.ErrorMessageConstant.NOT_FOUND_ERROR;
+import static com.sprout.URLShortner.common.constant.ErrorMessageConstant.SOMETHING_WENT_WRONG;
 import static org.springframework.http.HttpStatus.*;
 
 @RestControllerAdvice
@@ -31,7 +33,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseDTO(
                 NOT_FOUND.value(),
                 NOT_FOUND.getReasonPhrase(),
-                "Not able to find Resource requested!");
+                NOT_FOUND_ERROR);
     }
 
     @ExceptionHandler({Exception.class})
@@ -41,7 +43,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseDTO(
                 INTERNAL_SERVER_ERROR.value(),
                 INTERNAL_SERVER_ERROR.getReasonPhrase(),
-                "Something went wrong");
+                SOMETHING_WENT_WRONG);
     }
 
 }
